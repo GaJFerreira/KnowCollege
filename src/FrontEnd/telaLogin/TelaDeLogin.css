@@ -1,0 +1,51 @@
+body{
+    background-image: url('../Fotos/background.jpg') ;
+    background-size: cover; /* Cobre toda a área da div */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat;
+    font-family: 'Arial', sans-serif;
+    margin: 0; /* Remove qualquer margem do body */
+    padding: 0; /* Remove qualquer padding do body */
+    min-height: 100vh;
+}
+
+.container {
+    width: 50%;
+    height: 80vh;
+    display: flex;
+    border-radius: 5px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Login */
+.login {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+.input-group {
+    width: 100%;
+    color: white;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    border: none;
+    
+}
+

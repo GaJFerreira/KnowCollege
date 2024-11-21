@@ -1,0 +1,46 @@
+body {
+    background-image: url('../Fotos/background.jpg');
+    background-size: cover; /* Cobre toda a área da tela */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    min-height: 100vh; /* Garante que a imagem cubra pelo menos a altura total da janela */
+    margin: 0; /* Remove qualquer margem do body */
+    padding: 0; /* Remove qualquer padding do body */
+}
+
+
+.container {
+    color: white;
+    width: 80%;
+    max-width: 800px; /* Limite máximo da largura */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 20px; /* Espaçamento interno */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8); /* Sombra ao redor do container */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: #f2f2f2;
+}
+.total {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.btn-finalizar {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
