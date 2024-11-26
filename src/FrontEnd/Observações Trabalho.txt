@@ -1,0 +1,9 @@
+Alunos: Gabriel Jose Ferreira Nunes Ribeiro 
+	Cauê De Oliveira B Moreira
+
+Não colocar os alertas como popup colocar os alertas nos campos
+Fazer validação dos campos de cadastro de curso, campos obrigatórios colocar uma indicação
+Adicionar a foto na tela de descrição do curso
+Adicionar a foto do curso na tela de pagamento
+Verificar se o curso já esta no carrinho, se já estiver apontar a quantidade
+na opção de celular ajustar a barra de navegação
