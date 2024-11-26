@@ -1,10 +1,17 @@
 package com.example.demo.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
 import java.util.Set;
 
 @Entity
 @Table(name = "compra")
+@Data // Gera getters, setters, toString, equals e hashCode
+@NoArgsConstructor // Construtor sem argumentos, necessário para o JPA
+@AllArgsConstructor // Construtor com todos os campos
 public class Compra {
 
     @Id
@@ -21,6 +28,4 @@ public class Compra {
 
     @OneToMany(mappedBy = "compra")
     private Set<CompraCurso> compraCursos;
-
-    // Getters e Setters
 }
