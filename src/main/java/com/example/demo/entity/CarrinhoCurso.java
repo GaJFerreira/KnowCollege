@@ -1,9 +1,17 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name = "carrinho_curso")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CarrinhoCurso {
 
     @Id
@@ -20,6 +28,4 @@ public class CarrinhoCurso {
 
     private int quantidade;
     private double precoUnitario;
-
-    // Getters e Setters
 }
