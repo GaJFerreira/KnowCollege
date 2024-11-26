@@ -1,26 +1,3 @@
-// contextMenu.js
-
-// Menu de contexto
-document.addEventListener('contextmenu', function(event) {
-    event.preventDefault();
-    var contextMenu = document.getElementById('contextMenu');
-    contextMenu.style.display = 'block';
-    contextMenu.style.left = event.pageX + 'px';
-    contextMenu.style.top = event.pageY + 'px';
-});
-
-document.addEventListener('click', function(event) {
-    var contextMenu = document.getElementById('contextMenu');
-    contextMenu.style.display = 'none';
-});
-
-// Adicionando eventos aos itens do menu de contexto
-var contextItems = document.querySelectorAll('#contextMenu li');
-contextItems.forEach(function(item) {
-    item.addEventListener('click', function() {
-        alert(this.textContent + ' selecionado!');
-    });
-});
 
 function verificarLogin() {
     const usuarioLogado = localStorage.getItem('usuarioLogado');
