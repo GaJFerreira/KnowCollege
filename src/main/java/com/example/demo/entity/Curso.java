@@ -1,10 +1,18 @@
 package com.example.demo.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Set;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name = "curso")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Curso {
 
     @Id
@@ -27,6 +35,4 @@ public class Curso {
 
     @OneToMany(mappedBy = "curso")
     private Set<CompraCurso> compraCursos;
-
-    // Getters e Setters
 }
