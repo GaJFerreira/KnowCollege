@@ -26,6 +26,8 @@ public class Curso {
     private double preco;
     private String status; // ativo ou inativo
 
+    private String fotoUrl; // Campo para armazenar o caminho da foto
+
     @ManyToOne
     @JoinColumn(name = "professor_id")
     private Usuario professor;

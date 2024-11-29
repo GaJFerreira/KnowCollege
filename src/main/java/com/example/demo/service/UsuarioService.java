@@ -19,4 +19,8 @@ public class UsuarioService {
         usuarioRepository.save(entity); 
     }
 
+    public boolean login(String nome, String senha) {
+        return usuarioRepository.existsByNomeAndSenha(nome, senha);  // Exemplo de método no repositório
+    }
+
 }
