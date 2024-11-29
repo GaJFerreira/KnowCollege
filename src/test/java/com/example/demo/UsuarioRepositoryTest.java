@@ -17,10 +17,10 @@ public class UsuarioRepositoryTest {
     @Test
     public void testSalvarUsuario() {
         Usuario usuario = new Usuario();
-        usuario.setNome("Test User");
-        usuario.setEmail("test@example.com");
-        usuario.setSenha("12345");
-        usuario.setTipo("Aluno");
+        usuario.setNome("Caue de Oliveira");
+        usuario.setEmail("caue.obm@gmail.com");
+        usuario.setSenha("123");
+        usuario.setTipo("Professor");
         usuario.setStatus("ativo");
 
         Usuario savedUsuario = usuarioRepository.save(usuario);

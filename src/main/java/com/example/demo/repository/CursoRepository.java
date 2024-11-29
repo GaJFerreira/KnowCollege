@@ -4,5 +4,5 @@ import com.example.demo.entity.Curso;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CursoRepository extends JpaRepository<Curso, Long> {
-    // Métodos personalizados, se necessário
+    // Aqui você pode adicionar métodos customizados, se necessário
 }
