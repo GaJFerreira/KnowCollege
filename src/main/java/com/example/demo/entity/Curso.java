@@ -24,9 +24,9 @@ public class Curso {
     private int cargaHoraria;
     private String categoria;
     private double preco;
-    private String status; // ativo ou inativo
+    private String status;
 
-    private String fotoUrl; // Campo para armazenar o caminho da foto
+    private String fotoUrl;
 
     @ManyToOne
     @JoinColumn(name = "professor_id")

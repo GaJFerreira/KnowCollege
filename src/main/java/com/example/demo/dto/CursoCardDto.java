@@ -9,14 +9,9 @@ import lombok.AllArgsConstructor;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CursoDto {
-    private Long id;
+public class CursoCardDto {
     private String nome;
     private String descricao;
-    private String descricaoDetalhada;
-    private int cargaHoraria;
-    private String categoria;
-    private double preco;
-    private String status;
     private String fotoUrl;
+    private double preco;
 }
