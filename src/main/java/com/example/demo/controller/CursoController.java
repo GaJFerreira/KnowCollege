@@ -21,27 +21,17 @@ public class CursoController {
 
 
     @GetMapping("/biblioteca")
-    public List<CursoCardDto> listarCursosResumo() {
-        return cursoService.getCursosResumo();
+    public List<CursoCardDto> listarCursosCard() {
+        return cursoService.getCursosCard();
     }
+    
 
-    @PostMapping(value = "/cadastroCurso", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    @PostMapping(value = "/cadastro", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<?> cadastrarCurso(
-            @RequestParam("nome") String nome,
-            @RequestParam("descricao") String descricao,
-            @RequestParam("categoria") String categoria,
-            @RequestParam("cargaHoraria") int cargaHoraria,
-            @RequestParam("preco") double preco,
+            @ModelAttribute CursoDto cursoDto, 
             @RequestParam("foto") MultipartFile foto) {
-
-        // Criação e preenchimento do DTO
-        CursoDto cursoDto = new CursoDto();
-        cursoDto.setNome(nome);
-        cursoDto.setDescricao(descricao);
-        cursoDto.setCategoria(categoria);
-        cursoDto.setCargaHoraria(cargaHoraria);
-        cursoDto.setPreco(preco);
-
+    
+        // Agora o cursoDto está automaticamente preenchido com os dados da requisição
         try {
             cursoService.salvarCurso(cursoDto, foto);
             return ResponseEntity.status(HttpStatus.CREATED).body("Curso cadastrado com sucesso!");
@@ -50,21 +40,3 @@ public class CursoController {
         }
     }
 }
-
-/*
- * @PostMapping(value = "/cadastro", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-public ResponseEntity<?> cadastrarCurso(
-        @ModelAttribute CursoDto cursoDto, 
-        @RequestParam("foto") MultipartFile foto) {
-
-    // Agora o cursoDto está automaticamente preenchido com os dados da requisição
-    try {
-        cursoService.salvarCurso(cursoDto, foto);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Curso cadastrado com sucesso!");
-    } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao cadastrar curso: " + e.getMessage());
-    }
-}
-
- */
-

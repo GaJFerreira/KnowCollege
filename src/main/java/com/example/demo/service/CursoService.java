@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.CursoCardDto;
 import com.example.demo.dto.CursoDto;
 import com.example.demo.entity.Curso;
+import com.example.demo.mapper.CursoCardMapper;
 import com.example.demo.mapper.CursoMapper;
 import com.example.demo.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 @Service
 public class CursoService {
@@ -60,5 +63,11 @@ public class CursoService {
         Files.copy(foto.getInputStream(), targetPath, StandardCopyOption.REPLACE_EXISTING);
 
         return "/" + uploadDir + fileName;
+    }
+
+    public List<CursoCardDto> getCursosCard() {
+        List<Curso> cursos = cursoRepository.findAll();
+        
+        return CursoCardMapper.INSTANCE.cursoToCursoCardDTOList(cursos);
     }
 }
