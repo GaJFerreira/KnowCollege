@@ -1,16 +1,23 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
 import java.util.Set;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "curso")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Curso {
@@ -22,18 +29,15 @@ public class Curso {
     private String nome;
     private String descricao;
     private int cargaHoraria;
+    private String descricaoDetalhada;
     private String categoria;
     private double preco;
     private String status;
-
     private String fotoUrl;
 
     @ManyToOne
     @JoinColumn(name = "professor_id")
     private Usuario professor;
-
-    @OneToMany(mappedBy = "curso")
-    private Set<CarrinhoCurso> carrinhoCursos;
 
     @OneToMany(mappedBy = "curso")
     private Set<CompraCurso> compraCursos;

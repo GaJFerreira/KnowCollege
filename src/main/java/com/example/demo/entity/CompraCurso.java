@@ -1,15 +1,24 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "compra_curso")
-@Data // Gera getters, setters, toString, equals e hashCode
-@NoArgsConstructor // Construtor sem argumentos, necessário para o JPA
-@AllArgsConstructor // Construtor com todos os campos
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CompraCurso {
 
     @Id
