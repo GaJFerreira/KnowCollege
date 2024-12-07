@@ -23,7 +23,7 @@ public class CursoController {
     @GetMapping("/biblioteca")
     public List<CursoCardDto> listarCursosCard() {
         return cursoService.getCursosCard();
-    }
+    };
     
 
     @PostMapping(value = "/cadastro", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
@@ -37,6 +37,16 @@ public class CursoController {
             return ResponseEntity.status(HttpStatus.CREATED).body("Curso cadastrado com sucesso!");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao cadastrar curso: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/meusCursos")
+    public ResponseEntity<List<CursoCardDto>> listarMeusCursos(@RequestParam Long usuarioId) {
+        try {
+            List<CursoCardDto> meusCursos = cursoService.getMeusCursosCard(usuarioId);
+            return ResponseEntity.ok(meusCursos);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 }

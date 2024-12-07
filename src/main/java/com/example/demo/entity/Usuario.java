@@ -1,11 +1,19 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
 import java.util.Set;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "usuario")
@@ -22,11 +30,8 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-    private String tipo;  // Aluno ou Professor
-    private String status;  // ativo ou inativo
-
-    @OneToMany(mappedBy = "usuario")
-    private Set<Carrinho> carrinhos;
+    private String tipo; // Aluno ou Professor
+    private String status; // ativo ou inativo
 
     @OneToMany(mappedBy = "usuario")
     private Set<Compra> compras;

@@ -1,11 +1,24 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-
-import java.util.Set;
+import lombok.ToString;
 
 @Entity
 @Table(name = "compra")
@@ -22,14 +35,10 @@ public class Compra {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    private String status;  // pago, pendente, falha
+    private String status;
     private double valorTotal;
     private String dataCompra;
 
-    @ManyToOne
-    @JoinColumn(name = "carrinho_id")  // Relaciona a compra ao carrinho
-    private Carrinho carrinho;
-
-    @OneToMany(mappedBy = "compra")
-    private Set<CompraCurso> compraCursos; // Cursos comprados
+    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL)
+    private Set<CompraCurso> compraCursos;
 }
