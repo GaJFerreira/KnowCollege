@@ -58,11 +58,10 @@ public class CompraService {
             log.info("Curso encontrado: {}", curso);
 
             CompraCurso compraCurso = new CompraCurso();
-            compraCurso.setCompra(compra); // Relacionando com a compra salva
+            compraCurso.setCompra(compra);
             compraCurso.setCurso(curso);
             compraCurso.setPrecoPago(curso.getPreco());
 
-            // Salvando cada CompraCurso
             compraCursoRepository.save(compraCurso);
 
             log.info("CompraCurso salvo: {}", compraCurso);
