@@ -25,7 +25,7 @@ function Login() {
 
       if (response.ok) {
         const token = await response.json(); // Aqui você pode tratar a resposta do backend, como um token ou uma mensagem
-        localStorage.setItem('usuarioLogado', true);
+        localStorage.setItem('usuarioLogado', token);
 
         // Verifique se há um curso pendente para adicionar ao carrinho
         const cursoPendente = localStorage.getItem('cursoPendente');

@@ -1,10 +1,13 @@
 package com.example.demo.repository;
 
-import com.example.demo.entity.Curso;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CursoRepository extends JpaRepository<Curso, Long> {
-    // Aqui você pode adicionar métodos customizados, se necessário
+import com.example.demo.entity.Curso;
 
-    
+public interface CursoRepository extends JpaRepository<Curso, Long> {
+
+    List<Curso> findTop4ByOrderByNomeAsc();
+
 }

@@ -19,24 +19,28 @@ public class CursoController {
     @Autowired
     private CursoService cursoService;
 
-
     @GetMapping("/biblioteca")
     public List<CursoCardDto> listarCursosCard() {
         return cursoService.getCursosCard();
     };
-    
 
-    @PostMapping(value = "/cadastro", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    @GetMapping("/inicio")
+    public List<CursoCardDto> listar4CursosCard() {
+        return cursoService.get4CursosCard();
+    };
+
+    @PostMapping(value = "/cadastro", consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
     public ResponseEntity<?> cadastrarCurso(
-            @ModelAttribute CursoDto cursoDto, 
+            @ModelAttribute CursoDto cursoDto,
             @RequestParam("foto") MultipartFile foto) {
-    
+
         // Agora o cursoDto está automaticamente preenchido com os dados da requisição
         try {
             cursoService.salvarCurso(cursoDto, foto);
             return ResponseEntity.status(HttpStatus.CREATED).body("Curso cadastrado com sucesso!");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao cadastrar curso: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Erro ao cadastrar curso: " + e.getMessage());
         }
     }
 

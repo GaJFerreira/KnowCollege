@@ -17,17 +17,21 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     public void save(UsuarioDto usuarioDto) {
+        // Converte o DTO para entidade
         Usuario entity = UsuarioMapper.INSTANCE.toModel(usuarioDto);
         usuarioRepository.save(entity);
     }
 
-    public boolean login(String email, String senha) {
-        return usuarioRepository.existsByEmailAndSenha(email, senha); // Exemplo de método no repositório
-    }
+    // public String login(String email, String senha) {
+    // Usuario usuario = usuarioRepository.findByEmailAndSenha(email, senha)
+    // .orElseThrow(() -> new RuntimeException("Credenciais inválidas"));
+
+    // // Gerar o token após autenticação bem-sucedida
+    // return jwtTokenProvider.generateToken(usuario.getEmail());
+    // }
 
     public List<Usuario> listarUsuarios() {
-        List<Usuario> usuarios = usuarioRepository.findAll();
-        return usuarios;
+        return usuarioRepository.findAll();
     }
 
 }
