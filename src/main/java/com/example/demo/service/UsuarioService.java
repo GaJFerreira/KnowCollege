@@ -21,8 +21,8 @@ public class UsuarioService {
         usuarioRepository.save(entity);
     }
 
-    public boolean login(String nome, String senha) {
-        return usuarioRepository.existsByNomeAndSenha(nome, senha); // Exemplo de método no repositório
+    public boolean login(String email, String senha) {
+        return usuarioRepository.existsByEmailAndSenha(email, senha); // Exemplo de método no repositório
     }
 
     public List<Usuario> listarUsuarios() {
