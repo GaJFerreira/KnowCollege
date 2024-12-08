@@ -32,15 +32,17 @@ public class UsuarioController {
         }
     }
 
-    @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> login(@RequestBody UsuarioDto usuarioDto) {
-        try {
-            boolean token = service.login(usuarioDto.getEmail(), usuarioDto.getSenha());
-            return ResponseEntity.ok(token);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas.");
-        }
-    }
+    // @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE,
+    // produces = MediaType.APPLICATION_JSON_VALUE)
+    // public ResponseEntity<?> login(@RequestBody UsuarioDto usuarioDto) {
+    // try {
+    // String token = service.login(usuarioDto.getEmail(), usuarioDto.getSenha());
+    // return ResponseEntity.ok(token); // Retorna o token
+    // } catch (Exception e) {
+    // return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais
+    // inválidas.");
+    // }
+    // }
 
     @GetMapping(value = "/usuarios")
     public List<Usuario> listarUsuarios() {

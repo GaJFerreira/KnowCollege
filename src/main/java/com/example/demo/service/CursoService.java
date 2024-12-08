@@ -79,4 +79,9 @@ public class CursoService {
         List<Curso> cursos = compraCursoRepository.findCursosByUsuarioId(usuarioId);
         return CursoCardMapper.INSTANCE.cursoToCursoCardDTOList(cursos);
     }
+
+    public List<CursoCardDto> get4CursosCard() {
+        List<Curso> cursos = cursoRepository.findTop4ByOrderByNomeAsc();
+        return CursoCardMapper.INSTANCE.cursoToCursoCardDTOList(cursos);
+    }
 }
