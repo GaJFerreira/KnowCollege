@@ -6,8 +6,10 @@ import Login from './Paginas/Login';
 import Inicio from './Paginas/Inicio';
 import Cadastro from './Paginas/Cadasto';
 import Carrinho from './Paginas/Carrinho';
+import CadastroCurso from './Paginas/CadastroCurso';
 import BibliotecaDeCursos from './Paginas/Biblioteca';
 import TelaDePagamento from './Paginas/Pagamento';
+import DescricaoCurso from './Paginas/DescricaoCurso';
 
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
           <Route path="/carrinho" element={<Carrinho />} /> {/* Página de Carrinho */}
           <Route path="/biblioteca" element={<BibliotecaDeCursos />} /> {/*Página de Biblioteca */}
           <Route path="/pagemento" element={<TelaDePagamento />} /> {/*Página de Biblioteca */}
+          <Route path="/cadastrocurso" element={<CadastroCurso />} /> {/*Página de Castro de curso */}
+          <Route path="/descricao" element={<DescricaoCurso />} /> {/*Página de Decrição de curso */}
 
         </Routes>
       </div>

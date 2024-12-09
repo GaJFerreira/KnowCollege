@@ -24,6 +24,10 @@ const Navbar = () => {
     navigate('/login');  // Caminho da página de login
   };
 
+  const irParaCadastrocurso = () => {
+    navigate('/cadastrocurso');  // Caminho da página de cadastro
+  };
+
   const irParaCarrinho = () => {
     navigate('/carrinho');  // Caminho para o carrinho
   };
@@ -70,7 +74,7 @@ const Navbar = () => {
             ) : (
               // Botões que aparecem apenas se o usuário estiver logado
               <>
-                <button id="botaoCadastroCurso" className="btn btn-info me-2" onClick={irParaCadastro}>
+                <button id="botaoCadastroCurso" className="btn btn-info me-2" onClick={irParaCadastrocurso}>
                   <img src={CursosIcon} alt="Ícone de Cadastro" style={{ width: '20px', height: '20px', verticalAlign: 'middle', marginRight: '8px' }} />
                   Adicionar Cursos
                 </button>

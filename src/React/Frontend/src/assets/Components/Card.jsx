@@ -1,6 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';  // Importando o hook useNavigate
 
-function Card({ title, text, image, onClick }) {
+function Card({ id, title, text, image, onClick }) {
+  const navigate = useNavigate();  // Hook para navegação
+
+  const irParaDescricao = () => {
+    navigate(`/descricao/${id}`);  // Navegar para a página de descrição passando o id
+  };
+
   return (
     <div
       className="card m-2"
@@ -16,7 +23,7 @@ function Card({ title, text, image, onClick }) {
       <div className="card-body d-flex flex-column">
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{text}</p>
-        <button className="btn btn-info me-2" type="button" onClick={onClick}>
+        <button className="btn btn-info me-2" type="button" onClick={irParaDescricao}>
           Ver Detalhes
         </button>
       </div>

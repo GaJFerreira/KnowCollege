@@ -22,16 +22,15 @@ public class UsuarioService {
         usuarioRepository.save(entity);
     }
 
-    // public String login(String email, String senha) {
-    // Usuario usuario = usuarioRepository.findByEmailAndSenha(email, senha)
-    // .orElseThrow(() -> new RuntimeException("Credenciais inválidas"));
+    public Long login(String email, String senha) {
+        Usuario usuario = usuarioRepository.findByEmailAndSenha(email, senha)
+                .orElseThrow(() -> new RuntimeException("Credenciais inválidas"));
 
-    // // Gerar o token após autenticação bem-sucedida
-    // return jwtTokenProvider.generateToken(usuario.getEmail());
-    // }
+        // Gerar o token após autenticação bem-sucedida
+        return usuario.getId();
+    }
 
     public List<Usuario> listarUsuarios() {
         return usuarioRepository.findAll();
     }
-
 }
