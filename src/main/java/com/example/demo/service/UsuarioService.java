@@ -16,10 +16,11 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public void save(UsuarioDto usuarioDto) {
+    public Long save(UsuarioDto usuarioDto) {
         // Converte o DTO para entidade
         Usuario entity = UsuarioMapper.INSTANCE.toModel(usuarioDto);
-        usuarioRepository.save(entity);
+        Usuario savedEntity = usuarioRepository.save(entity);
+        return savedEntity.getId();
     }
 
     public Long login(String email, String senha) {

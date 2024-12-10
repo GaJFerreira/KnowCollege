@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 function Cadastro() {
   const [erro, setErro] = useState('');
   const [sucesso, setSucesso] = useState('');

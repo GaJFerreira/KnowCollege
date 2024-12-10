@@ -106,18 +106,25 @@ function Inicio() {
                 </div>
             </main>
 
+            <h1 className="text-center mb-4">Cursos em destaque</h1>
+
             {/* Renderiza os Cards dinamicamente */}
             <div className="cards d-flex justify-content-center flex-wrap mt-4">
-                {cursos.map((curso, index) => (
-                    <Card
-                        key={curso.id || `curso-${index}`}
-                        id={curso.id}
-                        title={curso.nome}
-                        text={curso.descricao}
-                        image={curso.fotoUrl}
-                        onClick={() => handleCardClick(curso.id)}
-                    />
-                ))}
+
+                {cursos.length > 0 ? (
+                    cursos.map((curso) => (
+                        <Card
+                            key={curso.id}
+                            id={curso.id}
+                            title={curso.nome}
+                            text={curso.descricao}
+                            image={curso.fotoUrl || 'https://via.placeholder.com/150'} // Fallback para imagem
+                            onClick={() => handleCardClick(curso.id)}
+                        />
+                    ))
+                ) : (
+                    <p className="text-center text-light mt-4">Nenhum curso disponível no momento.</p>
+                )}
             </div>
         </div>
     );
