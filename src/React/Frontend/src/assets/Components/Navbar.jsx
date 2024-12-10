@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 import logo from '../Arquivos/logo2.png';
 import CursosIcon from '../Arquivos/Cursos.png';
 import CarrinhoIcon from '../Arquivos/carrinho.png';
@@ -8,6 +9,7 @@ import LogoutIcon from '../Arquivos/Logout.png';
 
 const Navbar = () => {
   const navigate = useNavigate();
+
   const [usuarioLogado, setUsuarioLogado] = useState(false);
 
   useEffect(() => {
@@ -62,6 +64,8 @@ const Navbar = () => {
             </li>
           </ul>
 
+
+
           {/* Botões da navbar */}
           <div className="d-flex">
             {!usuarioLogado ? (
@@ -74,6 +78,7 @@ const Navbar = () => {
                 </button>
               </>
             ) : (
+
               <>
                 <button className="btn btn-info me-2" onClick={irParaCadastrocurso}>
                   <img

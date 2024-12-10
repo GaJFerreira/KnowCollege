@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Card from '../assets/Components/Card';
 import imagem1 from "../assets/Arquivos/Imagem 1.jpg";
 import imagem2 from "../assets/Arquivos/Imagem 2.jpg";
 import imagem3 from "../assets/Arquivos/Imagem 3.jpg";
+import imagem4 from "../uploads/1733442590854_CursoPython.png"
+import "../Css/inicio.css";
+
 
 function Inicio() {
     // Estado para armazenar os cursos
     const [cursos, setCursos] = useState([]);
+    const navigate = useNavigate();
 
     // Função para buscar os cursos
     useEffect(() => {
@@ -18,10 +23,15 @@ function Inicio() {
                         'Content-Type': 'application/json',
                     },
                 });
-                const data = await response.json();
-                setCursos(data); // Atualiza o estado com os cursos recebidos
+                if (response.ok) {
+                    const data = await response.json();
+                    setCursos(data); // Atualiza o estado com os cursos recebidos
+                } else {
+                    throw new Error('Erro ao carregar cursos');
+                }
             } catch (error) {
                 console.error('Erro ao buscar cursos:', error);
+                alert('Não foi possível carregar os cursos no momento. Tente novamente mais tarde.');
             }
         };
 
@@ -30,12 +40,21 @@ function Inicio() {
 
     // Função para lidar com cliques nos cards
     const handleCardClick = (id) => {
-        console.log(`Card clicado: ${id}`);
-        // Adicione a lógica de redirecionamento ou ação aqui
+        navigate(`/curso/${id}`); // Redireciona para a página de detalhes do curso
     };
+    const importaImg = (cursos) => {
+        {
+            cursos.map((curso, index) => (
+
+                "Para cada fotoURL in curso execute 'import imagem3 from '../assets/Arquivos/Imagem 3.jpg';'"
+
+            ))
+        }
+    }
 
     return (
         <div>
+            {/* Carrossel */}
             <main className="m-3 d-flex justify-content-center flex-column">
                 <div className="d-flex justify-content-center">
                     <div id="carouselExample" className="carousel slide col-8">
@@ -44,24 +63,24 @@ function Inicio() {
                                 <img
                                     src={imagem1}
                                     className="img-fluid d-block w-100"
-                                    alt="..."
-                                    style={{ objectFit: 'cover', height: '100%' }}
+                                    alt="Primeira imagem do carrossel"
+                                    style={{ objectFit: 'cover', height: '500px' }}
                                 />
                             </div>
                             <div className="carousel-item">
                                 <img
                                     src={imagem2}
                                     className="img-fluid d-block w-100"
-                                    alt="..."
-                                    style={{ objectFit: 'cover', height: '100%' }}
+                                    alt="Segunda imagem do carrossel"
+                                    style={{ objectFit: 'cover', height: '500px' }}
                                 />
                             </div>
                             <div className="carousel-item">
                                 <img
                                     src={imagem3}
                                     className="img-fluid d-block w-100"
-                                    alt="..."
-                                    style={{ objectFit: 'cover', height: '100%' }}
+                                    alt="Terceira imagem do carrossel"
+                                    style={{ objectFit: 'cover', height: '500px' }}
                                 />
                             </div>
                         </div>
@@ -87,23 +106,24 @@ function Inicio() {
                 </div>
             </main>
 
-      <h1 className="text-center mb-4">Cursos em destaque</h1>
+            <h1 className="text-center mb-4">Cursos em destaque</h1>
 
             {/* Renderiza os Cards dinamicamente */}
             <div className="cards d-flex justify-content-center flex-wrap mt-4">
+
                 {cursos.length > 0 ? (
-                cursos.map((curso) => (
-                    <Card
-                    key={curso.id}
-                    id={curso.id}
-                    title={curso.nome}
-                    text={curso.descricao}
-                    image={curso.fotoUrl || 'https://via.placeholder.com/150'} // Fallback para imagem
-                    onClick={() => handleCardClick(curso.id)}
-                    />
-                ))
+                    cursos.map((curso) => (
+                        <Card
+                            key={curso.id}
+                            id={curso.id}
+                            title={curso.nome}
+                            text={curso.descricao}
+                            image={curso.fotoUrl || 'https://via.placeholder.com/150'} // Fallback para imagem
+                            onClick={() => handleCardClick(curso.id)}
+                        />
+                    ))
                 ) : (
-                <p className="text-center text-light mt-4">Nenhum curso disponível no momento.</p>
+                    <p className="text-center text-light mt-4">Nenhum curso disponível no momento.</p>
                 )}
             </div>
         </div>

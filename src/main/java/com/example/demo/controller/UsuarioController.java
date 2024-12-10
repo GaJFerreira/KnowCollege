@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,10 +26,12 @@ public class UsuarioController {
     @PostMapping(value = "/cadastro", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> save(@RequestBody UsuarioDto usuarioDto) {
         try {
-            service.save(usuarioDto);
-            return ResponseEntity.status(HttpStatus.CREATED).body("Usuário cadastrado com sucesso!");
+            Long userId = service.save(usuarioDto); // Recebe o ID do usuário
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(Map.of("message", "Usuário cadastrado com sucesso!", "id", userId));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao cadastrar usuário: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Erro ao cadastrar usuário: " + e.getMessage());
         }
     }
 
