@@ -50,7 +50,7 @@ function BibliotecaDeCursos() {
             />
           ))
         ) : (
-          <p className="text-center mt-4">Nenhum curso disponível no momento.</p>
+          <p className="text-center text-light mt-4">Nenhum curso disponível no momento.</p>
         )}
       </div>
     </main>
