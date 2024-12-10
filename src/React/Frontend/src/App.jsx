@@ -14,10 +14,10 @@ import DescricaoCurso from './Paginas/DescricaoCurso';
 
 function App() {
   return (
-<Router>
+    <Router>
       <div className="App">
-       
-       <Navbar/>
+
+        <Navbar />
 
         <Routes>
           {/* Defina a rota padrão (ou seja, a página inicial) */}
@@ -29,7 +29,7 @@ function App() {
           <Route path="/biblioteca" element={<BibliotecaDeCursos />} /> {/*Página de Biblioteca */}
           <Route path="/pagemento" element={<TelaDePagamento />} /> {/*Página de Biblioteca */}
           <Route path="/cadastrocurso" element={<CadastroCurso />} /> {/*Página de Castro de curso */}
-          <Route path="/descricao" element={<DescricaoCurso />} /> {/*Página de Decrição de curso */}
+          <Route path="/descricao/:id" element={<DescricaoCurso />} />
 
         </Routes>
       </div>
