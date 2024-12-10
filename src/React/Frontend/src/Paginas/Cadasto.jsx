@@ -1,4 +1,5 @@
 import React from 'react';
+import '../CSS/EstiloGeral.css'; // Certifique-se de importar o CSS
 
 function Cadastro() {
   const fazerCadastro = async (event) => {
