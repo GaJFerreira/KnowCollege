@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.dto.CursoCardDto;
+import com.example.demo.dto.CursoDescricaoDto;
 import com.example.demo.dto.CursoDto;
 import com.example.demo.service.CursoService;
 
@@ -59,4 +61,15 @@ public class CursoController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> CursoDescricao(@PathVariable Long id) {
+        try {
+            CursoDescricaoDto cursoDescricao = cursoService.getCursoDescricao(id);
+            return ResponseEntity.ok(cursoDescricao);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao buscar descrição do curso.");
+        }
+    }
+
 }

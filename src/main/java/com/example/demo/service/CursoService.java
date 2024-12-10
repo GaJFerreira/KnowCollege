@@ -13,9 +13,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.dto.CursoCardDto;
+import com.example.demo.dto.CursoDescricaoDto;
 import com.example.demo.dto.CursoDto;
 import com.example.demo.entity.Curso;
 import com.example.demo.mapper.CursoCardMapper;
+import com.example.demo.mapper.CursoDescricaoMapper;
 import com.example.demo.mapper.CursoMapper;
 import com.example.demo.repository.CompraCursoRepository;
 import com.example.demo.repository.CursoRepository;
@@ -84,4 +86,11 @@ public class CursoService {
         List<Curso> cursos = cursoRepository.findTop4ByOrderByNomeAsc();
         return CursoCardMapper.INSTANCE.cursoToCursoCardDTOList(cursos);
     }
+
+    public CursoDescricaoDto getCursoDescricao(Long cursoId) {
+        Curso curso = cursoRepository.findById(cursoId)
+                .orElseThrow(() -> new IllegalArgumentException("Curso não encontrado com o ID: " + cursoId));
+        return CursoDescricaoMapper.INSTANCE.cursoToCursoDescricaoDTO(curso);
+    }
+
 }

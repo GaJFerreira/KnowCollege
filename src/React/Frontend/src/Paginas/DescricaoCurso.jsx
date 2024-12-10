@@ -1,44 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const DescricaoCurso = () => {
-  const [curso, setCurso] = useState(null);  // Estado para armazenar os dados do curso
-  const navigate = useNavigate();  // Hook para navegação programática
+  const { id } = useParams(); // Captura o ID da URL
+  const navigate = useNavigate();
+  const [curso, setCurso] = useState(null);
 
-  // Recupera os dados do curso do localStorage quando o componente é montado
   useEffect(() => {
-    const cursoSelecionado = JSON.parse(localStorage.getItem('cursoSelecionado'));
-    if (cursoSelecionado) {
-      setCurso(cursoSelecionado);  // Atualiza o estado com os dados do curso
-    } else {
-      setCurso(null);  // Caso não encontre o curso no localStorage
-    }
-  }, []);  // Executa apenas uma vez quando o componente for montado
+    const fetchCurso = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/curso/id?cursoiD=${id}`);
+        if (response.ok) {
+          const data = await response.json();
+          setCurso(data);
+        } else {
+          console.error('Erro ao buscar o curso:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Erro na requisição:', error);
+      }
+    };
 
-  // Função para adicionar o curso ao carrinho
+    fetchCurso();
+  }, [id]);
+
   const adicionarAoCarrinho = () => {
     if (curso) {
-      const usuarioLogado = localStorage.getItem('usuarioLogado');  // Verifica se o usuário está logado
+      const usuarioLogado = localStorage.getItem('usuarioLogado');
 
       if (usuarioLogado) {
-        // Se o usuário estiver logado, adiciona o curso ao carrinho
-        adicionarCursoAoCarrinho(curso);
+        let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+        carrinho.push(curso);
+        localStorage.setItem('carrinho', JSON.stringify(carrinho));
         alert(`${curso.nome} foi adicionado ao carrinho!`);
-        navigate('/carrinho');  // Redireciona para a página do carrinho
+        navigate('/carrinho');
       } else {
-        // Se o usuário não estiver logado, salva o curso pendente e redireciona para o login
         localStorage.setItem('cursoPendente', JSON.stringify(curso));
         alert('Você precisa fazer login para adicionar ao carrinho.');
-        navigate('/login');  // Redireciona para a página de login
+        navigate('/login');
       }
     }
-  };
-
-  // Função para adicionar o curso ao carrinho
-  const adicionarCursoAoCarrinho = (curso) => {
-    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-    carrinho.push(curso);  // Adiciona o curso ao carrinho
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));  // Atualiza o carrinho no localStorage
   };
 
   return (
@@ -52,7 +53,7 @@ const DescricaoCurso = () => {
           <button className="btn btn-secondary" onClick={() => navigate(-1)}>Voltar</button>
         </>
       ) : (
-        <h1>Curso não encontrado</h1>
+        <h1>Carregando...</h1>
       )}
     </div>
   );
