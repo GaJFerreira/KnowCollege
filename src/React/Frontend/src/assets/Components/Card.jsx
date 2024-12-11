@@ -1,11 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';  // Importando o hook useNavigate
+import { useNavigate } from 'react-router-dom';
 
-function Card({ id, title, text, image, onClick }) {
-  const navigate = useNavigate();  // Hook para navegação
+function Card({ id, title, text, image }) {
+  const navigate = useNavigate();
 
   const irParaDescricao = () => {
-    navigate(`/descricao/${id}`);  // Navegar para a página de descrição passando o id
+    navigate(`/descricao/${id}`); // Passa o ID como parte da URL
   };
 
   return (

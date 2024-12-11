@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CursoCardDto {
+    private Long id;
     private String nome;
     private String descricao;
     private String fotoUrl;

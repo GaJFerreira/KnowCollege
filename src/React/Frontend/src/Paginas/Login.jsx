@@ -1,89 +1,123 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../CSS/EstiloGeral.css'; // Certifique-se de importar o CSS
 
-const DescricaoCurso = () => {
-  const [curso, setCurso] = useState(null);  // Estado para armazenar os dados do curso
-  const [loading, setLoading] = useState(true); // Estado de carregamento
-  const [error, setError] = useState(null); // Estado de erro
-  const { id } = useParams();  // Pega o ID da URL
-  const navigate = useNavigate();  // Hook para navegação programática
+function Login() {
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [erro, setErro] = useState('');
+  const navigate = useNavigate();
 
-  // Recupera os dados do curso da API baseado no ID da URL
-  useEffect(() => {
-    const fetchCurso = async () => {
-      try {
-        const response = await fetch(`http://localhost:8080/curso/${id}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+  const fazerLogin = async (event) => {
+    event.preventDefault(); // Impede o envio automático do formulário
 
-        if (response.ok) {
-          const data = await response.json();
-          setCurso(data);  // Atualiza o estado com os dados do curso
-        } else {
-          throw new Error('Curso não encontrado');
+    try {
+      const response = await fetch('http://localhost:8080/usuario/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          senha: senha,
+        }),
+      });
+
+      if (response.ok) {
+        const token = await response.json(); // Aqui você pode tratar a resposta do backend, como um token ou uma mensagem
+        localStorage.setItem('usuarioLogado', token);
+
+        // Verifique se há um curso pendente para adicionar ao carrinho
+        const cursoPendente = localStorage.getItem('cursoPendente');
+        if (cursoPendente) {
+          const curso = JSON.parse(cursoPendente);
+          adicionarCursoAoCarrinho(curso.nome, curso.descricao, curso.preco);
+
+          // Limpe o curso pendente após adicioná-lo ao carrinho
+          localStorage.removeItem('cursoPendente');
         }
-      } catch (error) {
-        setError(error.message);  // Se ocorrer erro, armazena a mensagem
-      } finally {
-        setLoading(false);  // Indica que a requisição terminou
-      }
-    };
 
-    fetchCurso();
-  }, [id]);  // Executa sempre que o ID mudar
-
-  // Função para adicionar o curso ao carrinho
-  const adicionarAoCarrinho = () => {
-    if (curso) {
-      const usuarioLogado = localStorage.getItem('usuarioLogado');  // Verifica se o usuário está logado
-
-      if (usuarioLogado) {
-        // Se o usuário estiver logado, adiciona o curso ao carrinho
-        adicionarCursoAoCarrinho(curso);
-        alert(`${curso.nome} foi adicionado ao carrinho!`);
-        navigate('/carrinho');  // Redireciona para a página do carrinho
+        // Redirecionar para a tela inicial
+        navigate('/inicio');
       } else {
-        // Se o usuário não estiver logado, salva o curso pendente e redireciona para o login
-        localStorage.setItem('cursoPendente', JSON.stringify(curso));
-        alert('Você precisa fazer login para adicionar ao carrinho.');
-        navigate('/login');  // Redireciona para a página de login
+        const errorMessage = await response.text(); // Lê a mensagem de erro do backend
+        setErro(errorMessage || 'Usuário ou senha inválidos!');
       }
+    } catch (error) {
+      console.error('Erro ao fazer login:', error);
+      setErro('Erro ao conectar ao servidor. Tente novamente mais tarde.');
     }
+
   };
 
-  // Função para adicionar o curso ao carrinho
-  const adicionarCursoAoCarrinho = (curso) => {
+  const adicionarCursoAoCarrinho = (nome, descricao, preco) => {
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-    carrinho.push(curso);  // Adiciona o curso ao carrinho
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));  // Atualiza o carrinho no localStorage
+
+    // Adiciona o curso ao carrinho
+    carrinho.push({
+      nome: nome,
+      descricao: descricao,
+      preco: preco
+    });
+
+    // Atualiza o carrinho no localStorage
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
   };
 
-  if (loading) {
-    return <p>Carregando...</p>;  // Exibe enquanto os dados estão sendo carregados
-  }
-
-  if (error) {
-    return <p>{error}</p>;  // Exibe erro se houver falha na requisição
-  }
+  const handleCadastro = () => {
+    navigate('/cadastro');
+  };
 
   return (
-    <div className="container" style={{ marginTop: '3rem' }}>
-      {curso ? (
-        <>
-          <h1>{curso.nome}</h1>
-          <p>{curso.descricao}</p>
-          <p>Preço: {curso.preco}</p>
-          <button className="btn btn-success" onClick={adicionarAoCarrinho}>Adicionar ao Carrinho</button>
-          <button className="btn btn-secondary" onClick={() => navigate(-1)}>Voltar</button>
-        </>
-      ) : (
-        <h1>Curso não encontrado</h1>
-      )}
+    <div>
+
+      <main className="m-3 d-flex justify-content-center flex-column text-light">
+        <div className="">
+          <div className="shadow-lg p-3 justify-content-center d-flex">
+            <form onSubmit={fazerLogin}>
+              <h1>Login</h1>
+              <div className="mb-3">
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  className="form-control"
+                  name="email"
+                  placeholder="Digite seu email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="mb-3">
+                <label htmlFor="password">Senha</label>
+                <input
+                  id="password"
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  placeholder="Digite sua senha"
+                  value={senha}
+                  onChange={(e) => setSenha(e.target.value)}
+                  required
+                />
+              </div>
+
+              {erro && <p style={{ color: 'red' }}>{erro}</p>}
+
+              <button type="submit" className="btn btn-info">Login</button>
+            </form>
+
+            <button className="btn btn-link mt-1" onClick={handleCadastro}>
+              Cadastrar-se
+            </button>
+          </div>
+        </div>
+
+      </main>
     </div>
   );
-};
+}
 
-export default DescricaoCurso;
+export default Login;
