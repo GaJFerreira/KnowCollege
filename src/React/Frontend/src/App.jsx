@@ -10,6 +10,7 @@ import CadastroCurso from './Paginas/CadastroCurso';
 import BibliotecaDeCursos from './Paginas/Biblioteca';
 import TelaDePagamento from './Paginas/Pagamento';
 import DescricaoCurso from './Paginas/DescricaoCurso';
+import MeusCursos from './Paginas/MeusCursos'
 
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
           <Route path="/pagemento" element={<TelaDePagamento />} /> {/*Página de Biblioteca */}
           <Route path="/cadastrocurso" element={<CadastroCurso />} /> {/*Página de Castro de curso */}
           <Route path="/descricao/:id" element={<DescricaoCurso />} />
+          <Route path="/meusCursos" element={<MeusCursos />} />
+
 
         </Routes>
       </div>

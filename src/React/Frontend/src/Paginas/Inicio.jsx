@@ -28,7 +28,6 @@ function Inicio() {
         fetchCursos();
     }, []);
 
-
     const resolveImageUrl = (fotoUrl) => {
         if (fotoUrl?.startsWith("http")) {
             return fotoUrl;

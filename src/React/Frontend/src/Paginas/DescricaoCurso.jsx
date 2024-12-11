@@ -38,7 +38,7 @@ function DescricaoCurso() {
     };
 
     fetchCurso();
-  }, [id]); ~~
+  }, [id]);
 
   return (
     <div className="text-light container mt-4">

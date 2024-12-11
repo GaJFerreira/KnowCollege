@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const TelaDePagamento = () => {
@@ -31,7 +31,12 @@ const TelaDePagamento = () => {
       return;
     }
 
-    const usuarioId = 1; // ID do usuário logado (substituir pela lógica real se necessário)
+    const usuarioId = localStorage.getItem('usuarioLogado');
+    if (!usuarioId) {
+      alert('Usuário não está logado. Faça login para continuar.');
+      navigate('/login'); // Redireciona para a tela de login
+      return;
+    }
     const compraDto = {
       usuarioId,
       status: 'pago',
@@ -63,6 +68,13 @@ const TelaDePagamento = () => {
       console.error('Erro ao finalizar compra:', error);
       alert('Ocorreu um erro ao processar sua compra. Tente novamente mais tarde.');
     }
+    if (response.status === 401) {
+      alert('Você precisa fazer login para finalizar a compra.');
+      navigate('/login');
+    } else if (response.status >= 500) {
+      alert('Erro no servidor. Tente novamente mais tarde.');
+    }
+
   };
 
   // Carregar o carrinho ao montar o componente

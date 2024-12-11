@@ -1,30 +1,45 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
-import logo from '../Arquivos/logo2.png';
-import CursosIcon from '../Arquivos/Cursos.png';
+// Importação de ícones e logo
 import CarrinhoIcon from '../Arquivos/carrinho.png';
+import CursosIcon from '../Arquivos/Cursos.png';
+import logo from '../Arquivos/logo2.png';
 import LogoutIcon from '../Arquivos/Logout.png';
+
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [usuarioLogado, setUsuarioLogado] = useState(null);
 
-  const [usuarioLogado, setUsuarioLogado] = useState(false);
-
-  useEffect(() => {
-    const statusLogin = localStorage.getItem('usuarioLogado');
-    setUsuarioLogado(statusLogin === 'true');
-  }, []);
-
+  // Funções de navegação
   const irParaCadastro = () => navigate('/cadastro');
   const irParaLogin = () => navigate('/login');
   const irParaCadastrocurso = () => navigate('/cadastrocurso');
   const irParaCarrinho = () => navigate('/carrinho');
+  const irParaMeusCursos = () => navigate('/meusCursos')
 
+  // Verificação de usuário logado no localStorage
+  useEffect(() => {
+    const usuario = localStorage.getItem('usuarioLogado');
+    if (usuario) {
+      const dados = JSON.parse(usuario);
+      const agora = Date.now();
+
+      // Verifica se o token ou sessão expirou
+      if (dados.expiration && agora > dados.expiration) {
+        localStorage.removeItem('usuarioLogado');
+        setUsuarioLogado(null);
+      } else {
+        setUsuarioLogado(dados);
+      }
+    }
+  }, []);
+
+  // Função de logout
   const logout = () => {
     localStorage.removeItem('usuarioLogado');
-    setUsuarioLogado(false);
+    setUsuarioLogado(null);
     navigate('/login');
   };
 
@@ -64,11 +79,9 @@ const Navbar = () => {
             </li>
           </ul>
 
-
-
           {/* Botões da navbar */}
           <div className="d-flex">
-            {!usuarioLogado ? (
+            {usuarioLogado === null ? (
               <>
                 <button className="btn btn-info me-2" onClick={irParaCadastro}>
                   Cadastrar
@@ -78,7 +91,6 @@ const Navbar = () => {
                 </button>
               </>
             ) : (
-
               <>
                 <button className="btn btn-info me-2" onClick={irParaCadastrocurso}>
                   <img
@@ -87,6 +99,9 @@ const Navbar = () => {
                     style={{ width: '20px', height: '20px', verticalAlign: 'middle', marginRight: '8px' }}
                   />
                   Adicionar Cursos
+                </button>
+                <button className="btn btn-info me-2" onClick={irParaMeusCursos}>
+                  Meus Cursos
                 </button>
                 <button className="btn btn-info me-2" onClick={irParaCarrinho}>
                   <img
