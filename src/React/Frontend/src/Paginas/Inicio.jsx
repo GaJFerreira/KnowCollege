@@ -29,11 +29,6 @@ function Inicio() {
     }, []);
 
 
-    const handleCardClick = (id) => {
-        console.log(`Card clicado: ${id}`);
-    };
-
-
     const resolveImageUrl = (fotoUrl) => {
         if (fotoUrl?.startsWith("http")) {
             return fotoUrl;
@@ -95,7 +90,7 @@ function Inicio() {
                             title={curso.nome}
                             text={curso.descricao}
                             image={resolveImageUrl(curso.fotoUrl) || 'https://via.placeholder.com/150'}
-                            onClick={() => (curso.id)}
+                            onClick={() => handleCardClick(curso.id)}
                         />
 
                     ))
