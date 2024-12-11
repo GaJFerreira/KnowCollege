@@ -14,6 +14,7 @@ function DescricaoCurso() {
     return `http://localhost:8080${fotoUrl}`; // Caso contrário, adiciona o domínio à URL
   };
 
+  // Busca as informações do curso ao montar o componente
   useEffect(() => {
     const fetchCurso = async () => {
       try {
@@ -38,7 +39,17 @@ function DescricaoCurso() {
     };
 
     fetchCurso();
-  }, [id]); ~~
+
+  }, [id]);
+
+  // Função para adicionar o curso ao carrinho
+  const adicionarAoCarrinho = () => {
+    const carrinhoAtual = JSON.parse(localStorage.getItem('carrinho')) || [];
+    const novoCarrinho = [...carrinhoAtual, curso];
+    localStorage.setItem('carrinho', JSON.stringify(novoCarrinho));
+    alert('Curso adicionado ao carrinho com sucesso!');
+  };
+
 
   return (
     <div className="text-light container mt-4">
@@ -48,6 +59,7 @@ function DescricaoCurso() {
       ) : curso ? (
         <div>
           <h2>{curso.nome}</h2>
+
           <p>{curso.descricaoDetalhada || curso.descricao}</p> {/* Caso descricaoDetalhada seja nula, usa descricao */}
           <img
             src={resolveImageUrl(curso.fotoUrl)} // Resolve a URL da imagem
@@ -55,6 +67,16 @@ function DescricaoCurso() {
             className="img-fluid"
             style={{ maxWidth: '100%' }}
           />
+
+          <div className="mt-3">
+            <button
+              className="btn btn-success"
+              onClick={adicionarAoCarrinho}
+            >
+              Adicionar ao Carrinho
+            </button>
+          </div>
+
         </div>
       ) : (
         <p>Carregando informações do curso...</p>

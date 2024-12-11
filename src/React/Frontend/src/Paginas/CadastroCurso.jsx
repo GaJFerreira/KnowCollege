@@ -67,11 +67,11 @@ const CadastroCurso = () => {
     <main className="d-flex align-items-center justify-content-center flex-colun">
       <div className="container mt-5">
         <form className="form p-3" onSubmit={handleSubmit}>
-          <div className="form-header d-flex flex-colun align-items-center mb-3">
+          <div className="form-header d-flex flex-colun text-light align-items-center mb-3">
             <h1>Cadastro de Curso</h1>
           </div>
 
-          <div className="d-flex flex-column bd-highlight justify-content-between">
+          <div className="d-flex flex-column bd-highlight text-light justify-content-between">
             <div className="form-group mb-3">
               <label htmlFor="nome">Nome do curso</label>
               <input
