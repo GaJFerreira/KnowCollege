@@ -95,7 +95,7 @@ function Inicio() {
                             title={curso.nome}
                             text={curso.descricao}
                             image={resolveImageUrl(curso.fotoUrl) || 'https://via.placeholder.com/150'}
-                            onClick={() => (curso.id)}
+                            onClick={() => handleCardClick(curso.id)}
                         />
 
                     ))
