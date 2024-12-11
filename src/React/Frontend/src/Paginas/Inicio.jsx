@@ -28,14 +28,14 @@ function Inicio() {
 
   return (
     <div>
-      <main className="m-3 d-flex justify-content-center flex-column">
+      <main className="d-flex justify-content-center flex-column">
         <div className="d-flex justify-content-center">
-          <div id="carouselExample" className="carousel slide col-8">
+          <div id="carouselExample" className="carousel slide">
             <div className="carousel-inner">
               <div className="carousel-item active">
                 <img
                   src={imagem1}
-                  className="img-fluid d-block w-100"
+                  className="img-fluid d-block w-80"
                   alt="..."
                   style={{ objectFit: 'cover', height: '100%' }}
                 />
@@ -43,7 +43,7 @@ function Inicio() {
               <div className="carousel-item">
                 <img
                   src={imagem2}
-                  className="img-fluid d-block w-100"
+                  className="img-fluid d-block w-80"
                   alt="..."
                   style={{ objectFit: 'cover', height: '100%' }}
                 />
@@ -51,7 +51,7 @@ function Inicio() {
               <div className="carousel-item">
                 <img
                   src={imagem3}
-                  className="img-fluid d-block w-100"
+                  className="img-fluid d-block w-80"
                   alt="..."
                   style={{ objectFit: 'cover', height: '100%' }}
                 />
@@ -80,7 +80,7 @@ function Inicio() {
         </div>
       </main>
 
-      <h1 className="text-center mb-4">Cursos em destaque</h1>
+      <h1 className="text-center mb-4 text-light">Cursos em destaque</h1>
 
       <div className="cards d-flex justify-content-center flex-wrap mt-4">
         {cursos.length > 0 ? (
