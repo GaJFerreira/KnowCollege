@@ -6,6 +6,14 @@ function DescricaoCurso() {
   const [curso, setCurso] = useState(null); // Estado para armazenar os dados do curso
   const [erro, setErro] = useState(''); // Estado para armazenar mensagens de erro
 
+  // Função para resolver o URL da imagem
+  const resolveImageUrl = (fotoUrl) => {
+    if (fotoUrl?.startsWith("http")) {
+      return fotoUrl; // Se a URL já for completa, retorna como está
+    }
+    return `http://localhost:8080${fotoUrl}`; // Caso contrário, adiciona o domínio à URL
+  };
+
   // Busca as informações do curso ao montar o componente
   useEffect(() => {
     const fetchCurso = async () => {
@@ -31,6 +39,7 @@ function DescricaoCurso() {
     };
 
     fetchCurso();
+
   }, [id]);
 
   // Função para adicionar o curso ao carrinho
@@ -41,6 +50,7 @@ function DescricaoCurso() {
     alert('Curso adicionado ao carrinho com sucesso!');
   };
 
+
   return (
     <div className="text-light container mt-4">
       <h1>Descrição do Curso</h1>
@@ -49,13 +59,15 @@ function DescricaoCurso() {
       ) : curso ? (
         <div>
           <h2>{curso.nome}</h2>
-          <p>{curso.descricaoDetalhada}</p>
+
+          <p>{curso.descricaoDetalhada || curso.descricao}</p> {/* Caso descricaoDetalhada seja nula, usa descricao */}
           <img
-            src={curso.fotoUrl}
+            src={resolveImageUrl(curso.fotoUrl)} // Resolve a URL da imagem
             alt={curso.nome}
             className="img-fluid"
             style={{ maxWidth: '100%' }}
           />
+
           <div className="mt-3">
             <button
               className="btn btn-success"
@@ -64,6 +76,7 @@ function DescricaoCurso() {
               Adicionar ao Carrinho
             </button>
           </div>
+
         </div>
       ) : (
         <p>Carregando informações do curso...</p>

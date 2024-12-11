@@ -56,6 +56,7 @@ function Inicio() {
                   style={{ objectFit: 'cover', height: '100%' }}
                 />
               </div>
+
             </div>
             <button
               className="carousel-control-prev"
