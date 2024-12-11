@@ -31,6 +31,12 @@ function BibliotecaDeCursos() {
     console.log(`Curso clicado: ${id}`);
     // Adicione lógica, como redirecionamento ou exibição de detalhes
   };
+  const resolveImageUrl = (fotoUrl) => {
+    if (fotoUrl?.startsWith("http")) {
+      return fotoUrl;
+    }
+    return `http://localhost:8080${fotoUrl}`;
+  };
 
   return (
     <main className="m-3 d-flex flex-column align-items-center">
@@ -45,7 +51,7 @@ function BibliotecaDeCursos() {
               id={curso.id}
               title={curso.nome}
               text={curso.descricao}
-              image={curso.fotoUrl || 'https://via.placeholder.com/150'} // Fallback para imagem
+              image={resolveImageUrl(curso.fotoUrl) || 'https://via.placeholder.com/150'} // Fallback para imagem
               onClick={() => handleCardClick(curso.id)}
             />
           ))

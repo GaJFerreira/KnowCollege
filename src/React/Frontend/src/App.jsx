@@ -9,6 +9,7 @@ import CadastroCurso from './Paginas/CadastroCurso';
 import BibliotecaDeCursos from './Paginas/Biblioteca';
 import TelaDePagamento from './Paginas/Pagamento';
 import DescricaoCurso from './Paginas/DescricaoCurso';
+import MeusCursos from './Paginas/MeusCursos'
 
 function App() {
   return (
@@ -16,15 +17,19 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route path="/" element={<Inicio />} />
-          <Route path="/inicio" element={<Inicio />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/carrinho" element={<Carrinho />} />
-          <Route path="/biblioteca" element={<BibliotecaDeCursos />} />
-          <Route path="/pagemento" element={<TelaDePagamento />} />
-          <Route path="/cadastrocurso" element={<CadastroCurso />} />
-          <Route path="/descricao/:id" element={<DescricaoCurso />} /> {/* Rota corrigida */}
+    
+          {/* Defina a rota padrão (ou seja, a página inicial) */}
+          <Route path="/" element={<Inicio />} /> {/* Esta é a página inicial */}
+          <Route path="/inicio" element={<Inicio />} /> {/* Esta é a página inicial */}
+          <Route path="/login" element={<Login />} /> {/* Página de Login */}
+          <Route path="/cadastro" element={<Cadastro />} /> {/* Página de Cadastro */}
+          <Route path="/carrinho" element={<Carrinho />} /> {/* Página de Carrinho */}
+          <Route path="/biblioteca" element={<BibliotecaDeCursos />} /> {/*Página de Biblioteca */}
+          <Route path="/pagemento" element={<TelaDePagamento />} /> {/*Página de Biblioteca */}
+          <Route path="/cadastrocurso" element={<CadastroCurso />} /> {/*Página de Castro de curso */}
+          <Route path="/descricao/:id" element={<DescricaoCurso />} />
+          <Route path="/meusCursos" element={<MeusCursos />} />
+
         </Routes>
       </div>
     </Router>

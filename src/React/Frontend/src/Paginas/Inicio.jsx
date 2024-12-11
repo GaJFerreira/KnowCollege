@@ -7,6 +7,13 @@ import imagem3 from "../assets/Arquivos/Imagem 3.jpg";
 function Inicio() {
   const [cursos, setCursos] = useState([]);
 
+
+    const resolveImageUrl = (fotoUrl) => {
+        if (fotoUrl?.startsWith("http")) {
+            return fotoUrl;
+        }
+        return `http://localhost:8080${fotoUrl}`;
+
   useEffect(() => {
     const fetchCursos = async () => {
       try {
@@ -21,6 +28,7 @@ function Inicio() {
       } catch (error) {
         console.error('Erro ao buscar cursos:', error);
       }
+
     };
 
     fetchCursos();
