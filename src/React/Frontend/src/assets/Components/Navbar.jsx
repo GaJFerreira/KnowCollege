@@ -12,7 +12,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [usuarioLogado, setUsuarioLogado] = useState(null);
 
-  // Funções de navegação
+
   const irParaCadastro = () => navigate('/cadastro');
   const irParaLogin = () => navigate('/login');
   const irParaCadastrocurso = () => navigate('/cadastrocurso');
@@ -41,6 +41,8 @@ const Navbar = () => {
     localStorage.removeItem('usuarioLogado');
     setUsuarioLogado(null);
     navigate('/login');
+
+
   };
 
   return (
