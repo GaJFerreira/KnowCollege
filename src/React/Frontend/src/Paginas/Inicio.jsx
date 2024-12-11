@@ -29,11 +29,6 @@ function Inicio() {
     }, []);
 
 
-    const handleCardClick = (id) => {
-        console.log(`Card clicado: ${id}`);
-    };
-
-
     const resolveImageUrl = (fotoUrl) => {
         if (fotoUrl?.startsWith("http")) {
             return fotoUrl;
