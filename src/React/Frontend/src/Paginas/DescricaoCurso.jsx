@@ -61,6 +61,7 @@ function DescricaoCurso() {
           <h2>{curso.nome}</h2>
 
           <p>{curso.descricaoDetalhada || curso.descricao}</p> {/* Caso descricaoDetalhada seja nula, usa descricao */}
+          <p>Preço: R${curso.preco}</p>
           <img
             src={resolveImageUrl(curso.fotoUrl)} // Resolve a URL da imagem
             alt={curso.nome}

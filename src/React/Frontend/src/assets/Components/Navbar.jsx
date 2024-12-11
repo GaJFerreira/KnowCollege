@@ -13,8 +13,11 @@ const Navbar = () => {
   const [usuarioLogado, setUsuarioLogado] = useState(false);
 
   useEffect(() => {
-    const statusLogin = localStorage.getItem('usuarioLogado');
-    setUsuarioLogado(statusLogin === 'true');
+    const usuarioLogadoString = localStorage.getItem('usuarioLogado');
+    const usuarioLogado = usuarioLogadoString ? JSON.parse(usuarioLogadoString) : null;
+  
+    // Agora, usuarioLogado será um objeto ou null
+    setUsuarioLogado(usuarioLogado);
   }, []);
 
   const irParaCadastro = () => navigate('/cadastro');
@@ -24,8 +27,9 @@ const Navbar = () => {
 
   const logout = () => {
     localStorage.removeItem('usuarioLogado');
+    localStorage.removeItem('carrinho');
     setUsuarioLogado(false);
-    navigate('/login');
+    navigate('/inicio');
   };
 
   return (
