@@ -40,13 +40,11 @@ const Navbar = () => {
   const logout = () => {
     localStorage.removeItem('usuarioLogado');
     setUsuarioLogado(null);
-    navigate('/login');
-
-
+    navigate('/login'); 
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-3 p-1">
       <div className="container-fluid">
         {/* Logo */}
         <a className="navbar-brand" href="/inicio">
