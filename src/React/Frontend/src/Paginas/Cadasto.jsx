@@ -65,7 +65,6 @@ function Cadastro() {
 
   return (
     <div className="container text-light">
-      <div className="row">
         <div className="col-md-6">
           <form id="cadastroForm mb-2" onSubmit={fazerCadastro}>
             <div className="form-header d-flex justify-content-between align-items-center mb-3">
@@ -119,7 +118,7 @@ function Cadastro() {
             </div>
           </form>
         </div>
-      </div>
+    
     </div>
   );
 }

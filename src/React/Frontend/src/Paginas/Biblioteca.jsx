@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import '../CSS/Biblioteca.css'; // Certifique-se de importar o CSS, se necessário
+import '../CSS/EstiloGeral.css';
 import Card from '../assets/Components/Card';
 
 function BibliotecaDeCursos() {
@@ -40,7 +40,7 @@ function BibliotecaDeCursos() {
 
   return (
     <main className="m-3 d-flex flex-column align-items-center">
-      <h1 className="text-center text-light mb-4">Biblioteca de Cursos</h1>
+      <h1 className="titulo">Biblioteca de Cursos</h1>
 
       {/* Renderiza os Cards dinamicamente */}
       <div className="cards d-flex justify-content-center flex-wrap mt-4">

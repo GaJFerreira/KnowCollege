@@ -25,7 +25,7 @@ function App() {
           <Route path="/cadastro" element={<Cadastro />} /> {/* Página de Cadastro */}
           <Route path="/carrinho" element={<Carrinho />} /> {/* Página de Carrinho */}
           <Route path="/biblioteca" element={<BibliotecaDeCursos />} /> {/*Página de Biblioteca */}
-          <Route path="/pagemento" element={<TelaDePagamento />} /> {/*Página de Biblioteca */}
+          <Route path="/pagamento" element={<TelaDePagamento />} /> {/*Página de Biblioteca */}
           <Route path="/cadastrocurso" element={<CadastroCurso />} /> {/*Página de Castro de curso */}
           <Route path="/descricao/:id" element={<DescricaoCurso />} />
           <Route path="/meusCursos" element={<MeusCursos />} />

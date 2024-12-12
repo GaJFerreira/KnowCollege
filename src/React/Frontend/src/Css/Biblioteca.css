@@ -52,38 +52,16 @@ h1 {
     object-fit: cover; /* Garante que a imagem cubra completamente a área do card */
 }
 
-.card-body {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
 
-.card-title {
-    font-size: 1.25rem;
-    color: #33cff7; /* Cor para o título */
-    font-weight: bold;
-}
-
-.card-text {
-    font-size: 1rem;
-    color: #ddd; /* Cor mais suave para a descrição */
-    flex-grow: 1;
-}
-
-.btn-info {
-    background-color: #33cff7;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-}
-
-.btn-info:hover {
-    background-color: #2aa3bf;
-}
+  /* Navbar fixa no topo da página e ocupa toda a largura */
+  .navbar {
+    position: fixed; /* Fixa a navbar no topo */
+    top: 0; /* Posiciona no topo da página */
+    left: 0; /* Garante que a navbar ocupe toda a largura */
+    width: 100%; /* Largura 100% */
+    z-index: 1000; /* Garante que a navbar fique sobre outros elementos */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil para a navbar */
+  }
 
 /* Responsividade */
 @media (max-width: 768px) {

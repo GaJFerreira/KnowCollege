@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import '../CSS/EstiloGeral.css';
 
 function DescricaoCurso() {
   const { id } = useParams(); // Captura o parâmetro "id" da URL
@@ -52,8 +53,8 @@ function DescricaoCurso() {
 
 
   return (
-    <div className="text-light container mt-4">
-      <h1>Descrição do Curso</h1>
+    <div className="tcontainer mt-4 justify-content-center text-light d-flex flex-column">
+      <h1 className='titulo'>Descrição do Curso</h1>
       {erro ? (
         <p className="text-danger">{erro}</p>
       ) : curso ? (

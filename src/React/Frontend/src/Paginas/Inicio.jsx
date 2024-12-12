@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../CSS/EstiloGeral.css';
 import Card from '../assets/Components/Card';
 import imagem1 from "../assets/Arquivos/Imagem 1.jpg";
 import imagem2 from "../assets/Arquivos/Imagem 2.jpg";
@@ -13,6 +14,7 @@ function Inicio() {
             return fotoUrl;
         }
         return `http://localhost:8080${fotoUrl}`;
+    }
 
   useEffect(() => {
     const fetchCursos = async () => {
@@ -36,7 +38,7 @@ function Inicio() {
 
   return (
     <div>
-      <main className="d-flex justify-content-center flex-column">
+      <main className="d-flex justify-content-between flex-column">
         <div className="d-flex justify-content-center">
           <div id="carouselExample" className="carousel slide">
             <div className="carousel-inner">
