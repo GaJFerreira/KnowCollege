@@ -40,28 +40,28 @@ const CadastroCurso = () => {
     const formData = new FormData();
     formData.append("foto", curso.foto); // Envia o arquivo como "foto"
     Object.keys(curso).forEach((key) => {
-        if (key !== "foto") {
-            formData.append(key, curso[key]);
-        }
+      if (key !== "foto") {
+        formData.append(key, curso[key]);
+      }
     });
 
     try {
-        const response = await fetch("http://localhost:8080/curso/cadastro", {
-            method: "POST",
-            body: formData,
-        });
+      const response = await fetch("http://localhost:8080/curso/cadastro", {
+        method: "POST",
+        body: formData,
+      });
 
-        if (response.status === 201) {
-            alert("Curso cadastrado com sucesso!");
-            navigate("/inicio");
-        } else {
-            alert("Erro ao cadastrar o curso. Tente novamente.");
-        }
+      if (response.status === 201) {
+        alert("Curso cadastrado com sucesso!");
+        navigate("/inicio");
+      } else {
+        alert("Erro ao cadastrar o curso. Tente novamente.");
+      }
     } catch (error) {
-        console.error("Erro ao cadastrar o curso:", error);
-        alert("Ocorreu um erro. Por favor, tente novamente mais tarde.");
+      console.error("Erro ao cadastrar o curso:", error);
+      alert("Ocorreu um erro. Por favor, tente novamente mais tarde.");
     }
-};
+  };
 
   return (
     <main className="d-flex align-items-center justify-content-center flex-colun">

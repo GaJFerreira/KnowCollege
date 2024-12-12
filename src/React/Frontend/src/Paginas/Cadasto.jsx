@@ -65,60 +65,60 @@ function Cadastro() {
 
   return (
     <div className="container text-light">
-        <div className="col-md-6">
-          <form id="cadastroForm mb-2" onSubmit={fazerCadastro}>
-            <div className="form-header d-flex justify-content-between align-items-center mb-3">
-              <div className="title mb-2">
-                <h1>Cadastre-se</h1>
-              </div>
+      <div className="col-md-6">
+        <form id="cadastroForm mb-2" onSubmit={fazerCadastro}>
+          <div className="form-header d-flex justify-content-between align-items-center mb-3">
+            <div className="title mb-2">
+              <h1>Cadastre-se</h1>
+            </div>
+          </div>
+
+          <div className="input-group mb-2">
+            <div className="form-group mb-2">
+              <label htmlFor="name">Nome completo</label>
+              <input
+                id="name"
+                type="text"
+                className="form-control"
+                name="name"
+                placeholder="Digite seu nome completo"
+                required
+              />
             </div>
 
-            <div className="input-group mb-2">
-              <div className="form-group mb-2">
-                <label htmlFor="name">Nome completo</label>
-                <input
-                  id="name"
-                  type="text"
-                  className="form-control"
-                  name="name"
-                  placeholder="Digite seu nome completo"
-                  required
-                />
-              </div>
-
-              <div className="form-group mb-2">
-                <label htmlFor="email">Email</label>
-                <input
-                  id="email"
-                  type="email"
-                  className="form-control"
-                  name="email"
-                  placeholder="Digite seu email"
-                  required
-                />
-              </div>
-
-              <div className="form-group mb-2">
-                <label htmlFor="password">Senha</label>
-                <input
-                  id="password"
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  placeholder="Digite sua senha"
-                  required
-                />
-              </div>
+            <div className="form-group mb-2">
+              <label htmlFor="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                className="form-control"
+                name="email"
+                placeholder="Digite seu email"
+                required
+              />
             </div>
 
-            <div className="Cadastrarmb-2">
-              <button type="submit" className="btn btn-info">
-                Cadastrar
-              </button>
+            <div className="form-group mb-2">
+              <label htmlFor="password">Senha</label>
+              <input
+                id="password"
+                type="password"
+                className="form-control"
+                name="password"
+                placeholder="Digite sua senha"
+                required
+              />
             </div>
-          </form>
-        </div>
-    
+          </div>
+
+          <div className="Cadastrarmb-2">
+            <button type="submit" className="btn btn-info">
+              Cadastrar
+            </button>
+          </div>
+        </form>
+      </div>
+
     </div>
   );
 }

@@ -1,11 +1,15 @@
-body{
-    background-image: url('../assets/Arquivos/background.jpg') ;
-    background-size: cover; /* Cobre toda a área da div */
-    background-position: center; /* Centraliza a imagem */
+body {
+    background-image: url('../assets/Arquivos/background.jpg');
+    background-size: cover;
+    /* Cobre toda a área da div */
+    background-position: center;
+    /* Centraliza a imagem */
     background-repeat: no-repeat;
     font-family: 'Arial', sans-serif;
-    margin: 0; /* Remove qualquer margem do body */
-    padding: 0; /* Remove qualquer padding do body */
+    margin: 0;
+    /* Remove qualquer margem do body */
+    padding: 0;
+    /* Remove qualquer padding do body */
     min-height: 100vh;
 }
 
@@ -13,7 +17,8 @@ body{
     margin-top: 50px;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0px 20px rgba(0, 0, 0, 10);
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.1);
+    /* Corrigido o valor de opacidade */
     color: white;
 }
 
@@ -33,18 +38,17 @@ h1 {
 }
 
 #carrinho .item-carrinho:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    /* Sombra mais forte no hover */
 }
 
 .item-carrinho h3 {
     font-size: 20px;
     color: #007bff;
     margin-bottom: 10px;
-    
 }
 
 .item-carrinho p {
-    
     margin: 5px 0;
 }
 
@@ -81,4 +85,31 @@ h1 {
     .container {
         padding: 15px;
     }
+
+    .item-carrinho img {
+        width: 80px;
+        /* Ajustado para imagem mais visível em dispositivos móveis */
+    }
+}
+
+.item-carrinho {
+    display: flex;
+    /* Alinha a imagem e informações lado a lado */
+    align-items: center;
+    gap: 15px;
+    /* Espaço entre a imagem e as informações */
+}
+
+.item-carrinho img {
+    width: 120px;
+    /* Diminuído o tamanho da imagem para desktop */
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.item-carrinho .info-carrinho {
+    flex: 1;
+    /* Faz as informações ocuparem o espaço restante */
 }
