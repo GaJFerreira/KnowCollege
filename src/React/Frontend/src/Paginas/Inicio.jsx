@@ -42,8 +42,8 @@ function Inicio() {
 
     return (
         <div>
-            <main className="d-flex justify-content-between flex-column">
-                <div className="d-flex justify-content-center">
+            <main className="d-flex justify-content-center flex-column">
+                <div className="d-flex justify-content-center flex">
                     <div id="carouselExample" className="carousel slide">
                         <div className="carousel-inner">
                             <div className="carousel-item active">
@@ -51,7 +51,7 @@ function Inicio() {
                                     src={imagem1}
                                     className="img-fluid d-block w-80"
                                     alt="..."
-                                    style={{ objectFit: 'cover', height: '100%' }}
+                                    style={{ objectFit: 'cover', height: '80%' }}
                                 />
                             </div>
                             <div className="carousel-item">

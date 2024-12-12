@@ -27,22 +27,24 @@ function Cadastro() {
           },
           body: JSON.stringify(cadastroData),
         });
-
+      
         if (response.status === 201) {
-          // Cadastro bem-sucedido
-          alert('Cadastro bem-sucedido!');
-          localStorage.setItem('usuarioLogado', true);
-          // Verifique se há um curso pendente para adicionar ao carrinho
+          const responseData = await response.json(); // Aguarda o JSON da resposta
+          const userId = responseData.id; // Obtém o ID do usuário da resposta
+      
+          // Salva o ID no localStorage
+          localStorage.setItem('usuarioLogado', userId);
+      
+          // Verifica se há curso pendente
           const cursoPendente = localStorage.getItem('cursoPendente');
           if (cursoPendente) {
             const curso = JSON.parse(cursoPendente);
             adicionarCursoAoCarrinho(curso.nome, curso.descricao, curso.preco);
-            // Limpe o curso pendente após adicioná-lo ao carrinho
             localStorage.removeItem('cursoPendente');
           }
-
-          // Redirecionar para a tela inicial
-          window.location.href = '/inicio'; // Ajuste para o caminho do React Router
+      
+          // Redireciona para a página inicial
+          window.location.href = '/inicio';
         } else {
           alert('Erro ao cadastrar. Tente novamente!');
         }
@@ -50,6 +52,7 @@ function Cadastro() {
         console.error('Erro ao realizar cadastro:', error);
         alert('Ocorreu um erro. Tente novamente mais tarde.');
       }
+      
     } else {
       alert('Por favor, preencha todos os campos!');
     }

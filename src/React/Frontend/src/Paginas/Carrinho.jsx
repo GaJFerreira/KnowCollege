@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../CSS/EstiloGeral.css';
-import '../Css/Carrinho.css';
 
 function Carrinho() {
   const navigate = useNavigate();
