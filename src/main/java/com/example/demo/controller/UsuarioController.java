@@ -28,12 +28,13 @@ public class UsuarioController {
         try {
             Long userId = service.save(usuarioDto); // Recebe o ID do usuário
             return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(Map.of("message", "Usuário cadastrado com sucesso!", "id", userId));
+                    .body(Map.of("id", userId)); // Retorna um JSON com o ID
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("Erro ao cadastrar usuário: " + e.getMessage());
+                    .body(Map.of("error", "Erro ao cadastrar usuário", "details", e.getMessage()));
         }
     }
+    
 
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> login(@RequestBody UsuarioDto usuarioDto) {

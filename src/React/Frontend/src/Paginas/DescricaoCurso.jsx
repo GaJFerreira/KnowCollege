@@ -53,7 +53,7 @@ function DescricaoCurso() {
 
 
   return (
-    <div className="tcontainer mt-4 justify-content-center text-light d-flex flex-column">
+    <div className="container mt-4 justify-content-center text-light d-flex flex-column">
       <h1 className='titulo'>Descrição do Curso</h1>
       {erro ? (
         <p className="text-danger">{erro}</p>
@@ -67,7 +67,7 @@ function DescricaoCurso() {
             src={resolveImageUrl(curso.fotoUrl)} // Resolve a URL da imagem
             alt={curso.nome}
             className="img-fluid"
-            style={{ maxWidth: '100%' }}
+            style={{ maxWidth: '70%', padding: "1rem" }}
           />
 
           <div className="mt-3">

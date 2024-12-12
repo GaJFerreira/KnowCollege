@@ -90,3 +90,88 @@ body{
       height: 120px; /* Ajusta a altura da imagem em telas muito pequenas */
   }
 }
+
+#carrinho .item-carrinho {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  transition: box-shadow 0.3s ease;
+}
+
+#carrinho .item-carrinho:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  /* Sombra mais forte no hover */
+}
+
+.item-carrinho h3 {
+  font-size: 20px;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.item-carrinho p {
+  margin: 5px 0;
+}
+
+.item-carrinho hr {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-top: 1px solid #eee;
+}
+
+.btn-secondary {
+  margin-top: 20px;
+}
+
+.empty-cart {
+  text-align: center;
+  color: #999;
+  font-size: 18px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  h1 {
+      font-size: 24px;
+  }
+
+  .item-carrinho h3 {
+      font-size: 18px;
+  }
+
+  .item-carrinho p {
+      font-size: 14px;
+  }
+
+  .container {
+      padding: 15px;
+  }
+
+  .item-carrinho img {
+      width: 80px;
+      /* Ajustado para imagem mais visível em dispositivos móveis */
+  }
+}
+
+.item-carrinho {
+  display: flex;
+  /* Alinha a imagem e informações lado a lado */
+  align-items: center;
+  gap: 15px;
+  /* Espaço entre a imagem e as informações */
+}
+
+.item-carrinho img {
+  width: 120px;
+  /* Diminuído o tamanho da imagem para desktop */
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.item-carrinho .info-carrinho {
+  flex: 1;
+  /* Faz as informações ocuparem o espaço restante */
+}
