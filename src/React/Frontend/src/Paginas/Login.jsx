@@ -72,46 +72,46 @@ function Login() {
     <div>
 
       <main className="container">
-          <div className="shadow-lg p-3 justify-content-center d-flex">
-            <form onSubmit={fazerLogin}>
-              <h1>Login</h1>
-              <div className="mb-3">
-                <label htmlFor="email">Email</label>
-                <input
-                  id="email"
-                  type="email"
-                  className="form-control"
-                  name="email"
-                  placeholder="Digite seu email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
+        <div className="shadow-lg p-3 justify-content-center d-flex">
+          <form onSubmit={fazerLogin}>
+            <h1>Login</h1>
+            <div className="mb-3">
+              <label htmlFor="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                className="form-control"
+                name="email"
+                placeholder="Digite seu email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
 
-              <div className="mb-3">
-                <label htmlFor="password">Senha</label>
-                <input
-                  id="password"
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  placeholder="Digite sua senha"
-                  value={senha}
-                  onChange={(e) => setSenha(e.target.value)}
-                  required
-                />
-              </div>
+            <div className="mb-3">
+              <label htmlFor="password">Senha</label>
+              <input
+                id="password"
+                type="password"
+                className="form-control"
+                name="password"
+                placeholder="Digite sua senha"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+                required
+              />
+            </div>
 
-              {erro && <p style={{ color: 'red' }}>{erro}</p>}
+            {erro && <p style={{ color: 'red' }}>{erro}</p>}
 
-              <button type="submit" className="btn btn-info">Login</button>
-            </form>
+            <button type="submit" className="btn btn-info">Login</button>
+          </form>
 
-            <button className="btn btn-link mt-1" onClick={handleCadastro}>
-              Cadastrar-se
-            </button>
-          </div>
+          <button className="btn btn-link mt-1" onClick={handleCadastro}>
+            Cadastrar-se
+          </button>
+        </div>
 
       </main>
     </div>

@@ -40,36 +40,36 @@ function Inicio() {
     }, []);
 
 
-  return (
-    <div>
-      <main className="d-flex justify-content-between flex-column">
-        <div className="d-flex justify-content-center">
-          <div id="carouselExample" className="carousel slide">
-            <div className="carousel-inner">
-              <div className="carousel-item active">
-                <img
-                  src={imagem1}
-                  className="img-fluid d-block w-80"
-                  alt="..."
-                  style={{ objectFit: 'cover', height: '100%' }}
-                />
-              </div>
-              <div className="carousel-item">
-                <img
-                  src={imagem2}
-                  className="img-fluid d-block w-80"
-                  alt="..."
-                  style={{ objectFit: 'cover', height: '100%' }}
-                />
-              </div>
-              <div className="carousel-item">
-                <img
-                  src={imagem3}
-                  className="img-fluid d-block w-80"
-                  alt="..."
-                  style={{ objectFit: 'cover', height: '100%' }}
-                />
-              </div>
+    return (
+        <div>
+            <main className="d-flex justify-content-between flex-column">
+                <div className="d-flex justify-content-center">
+                    <div id="carouselExample" className="carousel slide">
+                        <div className="carousel-inner">
+                            <div className="carousel-item active">
+                                <img
+                                    src={imagem1}
+                                    className="img-fluid d-block w-80"
+                                    alt="..."
+                                    style={{ objectFit: 'cover', height: '100%' }}
+                                />
+                            </div>
+                            <div className="carousel-item">
+                                <img
+                                    src={imagem2}
+                                    className="img-fluid d-block w-80"
+                                    alt="..."
+                                    style={{ objectFit: 'cover', height: '100%' }}
+                                />
+                            </div>
+                            <div className="carousel-item">
+                                <img
+                                    src={imagem3}
+                                    className="img-fluid d-block w-80"
+                                    alt="..."
+                                    style={{ objectFit: 'cover', height: '100%' }}
+                                />
+                            </div>
 
                         </div>
                         <button
