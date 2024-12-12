@@ -3,6 +3,7 @@ package com.example.demo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.UsuarioDto;
@@ -13,19 +14,31 @@ import com.example.demo.repository.UsuarioRepository;
 @Service
 public class UsuarioService {
 
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     @Autowired
     private UsuarioRepository usuarioRepository;
 
     public Long save(UsuarioDto usuarioDto) {
         // Converte o DTO para entidade
         Usuario entity = UsuarioMapper.INSTANCE.toModel(usuarioDto);
+
+        // Hash da senha antes de salvar
+        String hashedPassword = passwordEncoder.encode(usuarioDto.getSenha());
+        entity.setSenha(hashedPassword);
+
         Usuario savedEntity = usuarioRepository.save(entity);
         return savedEntity.getId();
     }
 
     public Long login(String email, String senha) {
-        Usuario usuario = usuarioRepository.findByEmailAndSenha(email, senha)
-                .orElseThrow(() -> new RuntimeException("Credenciais inválidas"));
+        Usuario usuario = usuarioRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        // Verificar a senha com BCrypt
+        if (!passwordEncoder.matches(senha, usuario.getSenha())) {
+            throw new RuntimeException("Credenciais inválidas");
+        }
 
         // Gerar o token após autenticação bem-sucedida
         return usuario.getId();
