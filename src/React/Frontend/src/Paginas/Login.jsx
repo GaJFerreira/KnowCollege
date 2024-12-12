@@ -71,8 +71,7 @@ function Login() {
   return (
     <div>
 
-      <main className="m-3 d-flex justify-content-center flex-column text-light">
-        <div className="">
+      <main className="container">
           <div className="shadow-lg p-3 justify-content-center d-flex">
             <form onSubmit={fazerLogin}>
               <h1>Login</h1>
@@ -113,7 +112,6 @@ function Login() {
               Cadastrar-se
             </button>
           </div>
-        </div>
 
       </main>
     </div>
