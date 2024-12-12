@@ -99,7 +99,7 @@ function Inicio() {
                             id={curso.id}
                             title={curso.nome}
                             text={curso.descricao}
-                            image={curso.fotoUrl || 'https://via.placeholder.com/150'}
+                            image={resolveImageUrl(curso.fotoUrl) || 'https://via.placeholder.com/150'}
                         />
                     ))
                 ) : (
