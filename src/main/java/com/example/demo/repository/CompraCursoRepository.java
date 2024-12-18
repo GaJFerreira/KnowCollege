@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface CompraCursoRepository extends JpaRepository<CompraCurso, Long> {
-    // Métodos personalizados, se necessário
-        @Query("SELECT cc.curso FROM CompraCurso cc WHERE cc.compra.usuario.id = :usuarioId")
-            List<Curso> findCursosByUsuarioId(@Param("usuarioId") Long usuarioId);
-    
+
+    @Query("SELECT cc.curso FROM CompraCurso cc WHERE cc.compra.usuario.id = :usuarioId")
+    List<Curso> findCursosByUsuarioId(@Param("usuarioId") Long usuarioId);
+
 }

@@ -30,8 +30,8 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-    private String tipo; // Aluno ou Professor
-    private String status; // ativo ou inativo
+    private String tipo;
+    private String status;
 
     @OneToMany(mappedBy = "usuario")
     private Set<Compra> compras;

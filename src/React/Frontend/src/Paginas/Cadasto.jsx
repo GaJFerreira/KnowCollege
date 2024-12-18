@@ -27,14 +27,14 @@ function Cadastro() {
           },
           body: JSON.stringify(cadastroData),
         });
-      
+
         if (response.status === 201) {
           const responseData = await response.json(); // Aguarda o JSON da resposta
           const userId = responseData.id; // Obtém o ID do usuário da resposta
-      
+
           // Salva o ID no localStorage
           localStorage.setItem('usuarioLogado', userId);
-      
+
           // Verifica se há curso pendente
           const cursoPendente = localStorage.getItem('cursoPendente');
           if (cursoPendente) {
@@ -42,7 +42,7 @@ function Cadastro() {
             adicionarCursoAoCarrinho(curso.nome, curso.descricao, curso.preco);
             localStorage.removeItem('cursoPendente');
           }
-      
+
           // Redireciona para a página inicial
           window.location.href = '/inicio';
         } else {
@@ -52,7 +52,7 @@ function Cadastro() {
         console.error('Erro ao realizar cadastro:', error);
         alert('Ocorreu um erro. Tente novamente mais tarde.');
       }
-      
+
     } else {
       alert('Por favor, preencha todos os campos!');
     }

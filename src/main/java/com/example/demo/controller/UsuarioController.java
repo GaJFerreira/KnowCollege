@@ -26,21 +26,20 @@ public class UsuarioController {
     @PostMapping(value = "/cadastro", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> save(@RequestBody UsuarioDto usuarioDto) {
         try {
-            Long userId = service.save(usuarioDto); // Recebe o ID do usuário
+            Long userId = service.save(usuarioDto);
             return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(Map.of("id", userId)); // Retorna um JSON com o ID
+                    .body(Map.of("id", userId));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(Map.of("error", "Erro ao cadastrar usuário", "details", e.getMessage()));
         }
     }
-    
 
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> login(@RequestBody UsuarioDto usuarioDto) {
         try {
             Long token = service.login(usuarioDto.getEmail(), usuarioDto.getSenha());
-            return ResponseEntity.ok(token); // Retorna o token
+            return ResponseEntity.ok(token);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas.");
         }

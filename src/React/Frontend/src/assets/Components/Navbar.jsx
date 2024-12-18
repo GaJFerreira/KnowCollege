@@ -19,14 +19,12 @@ const Navbar = () => {
   const irParaCarrinho = () => navigate('/carrinho');
   const irParaMeusCursos = () => navigate('/meusCursos')
 
-  // Verificação de usuário logado no localStorage
   useEffect(() => {
     const usuario = localStorage.getItem('usuarioLogado');
     if (usuario) {
       const dados = JSON.parse(usuario);
       const agora = Date.now();
 
-      // Verifica se o token ou sessão expirou
       if (dados.expiration && agora > dados.expiration) {
         localStorage.removeItem('usuarioLogado');
         setUsuarioLogado(null);
@@ -36,11 +34,10 @@ const Navbar = () => {
     }
   }, []);
 
-  // Função de logout
   const logout = () => {
     localStorage.removeItem('usuarioLogado');
     setUsuarioLogado(null);
-    navigate('/login'); 
+    navigate('/login');
   };
 
   return (

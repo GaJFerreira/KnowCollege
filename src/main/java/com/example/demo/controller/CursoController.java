@@ -42,7 +42,6 @@ public class CursoController {
             @ModelAttribute CursoDto cursoDto,
             @RequestParam("foto") MultipartFile foto) {
 
-        // Agora o cursoDto está automaticamente preenchido com os dados da requisição
         try {
             cursoService.salvarCurso(cursoDto, foto);
             return ResponseEntity.status(HttpStatus.CREATED).body("Curso cadastrado com sucesso!");
