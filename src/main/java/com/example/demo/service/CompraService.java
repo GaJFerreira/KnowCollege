@@ -33,7 +33,7 @@ public class CompraService {
     private CompraCursoRepository compraCursoRepository;
 
     public void finalizarCompra(CompraDto compraDTO) {
-        // Criando a entidade Compra
+
         Compra compra = new Compra();
         Usuario usuario = usuarioRepository.findById(compraDTO.getUsuarioId())
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
@@ -45,12 +45,10 @@ public class CompraService {
         compra.setValorTotal(compraDTO.getValorTotal());
         compra.setDataCompra(compraDTO.getDataCompra());
 
-        // Salvando a Compra primeiro
         compra = compraRepository.save(compra);
 
         log.info("Compra salva com ID: {}", compra.getId());
 
-        // Processando os cursos e criando os objetos CompraCurso
         for (Long cursoId : compraDTO.getCursosIds()) {
             Curso curso = cursoRepository.findById(cursoId)
                     .orElseThrow(() -> new RuntimeException("Curso não encontrado com ID: " + cursoId));

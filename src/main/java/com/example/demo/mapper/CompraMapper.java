@@ -12,11 +12,9 @@ public interface CompraMapper {
 
     CompraMapper INSTANCE = Mappers.getMapper(CompraMapper.class);
 
-    @Mapping(target = "compraCursos", ignore = true) // Ignora a associação automática de compraCursos
+    @Mapping(target = "compraCursos", ignore = true)
     Compra compraDtoToCompra(CompraDto compraDto);
 
     CompraDto toDto(Compra compra);
 
-    // Se houver necessidade de um método específico para cursos, pode adicionar
-    // aqui
 }

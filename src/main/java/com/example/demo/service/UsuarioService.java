@@ -20,10 +20,8 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     public Long save(UsuarioDto usuarioDto) {
-        // Converte o DTO para entidade
         Usuario entity = UsuarioMapper.INSTANCE.toModel(usuarioDto);
 
-        // Hash da senha antes de salvar
         String hashedPassword = passwordEncoder.encode(usuarioDto.getSenha());
         entity.setSenha(hashedPassword);
 
@@ -35,12 +33,10 @@ public class UsuarioService {
         Usuario usuario = usuarioRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
-        // Verificar a senha com BCrypt
         if (!passwordEncoder.matches(senha, usuario.getSenha())) {
             throw new RuntimeException("Credenciais inválidas");
         }
 
-        // Gerar o token após autenticação bem-sucedida
         return usuario.getId();
     }
 

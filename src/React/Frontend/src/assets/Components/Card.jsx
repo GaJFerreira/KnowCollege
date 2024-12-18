@@ -4,16 +4,15 @@ import { useNavigate } from 'react-router-dom';
 function Card({ id, title, text, image }) {
   const navigate = useNavigate();
 
-  // Função para resolver o URL da imagem
   const resolveImageUrl = (imageUrl) => {
     if (imageUrl?.startsWith('http')) {
-      return imageUrl; // Se a URL já for completa, retorna como está
+      return imageUrl;
     }
-    return `http://localhost:8080${imageUrl}`; // Adiciona o domínio base à URL relativa
+    return `http://localhost:8080${imageUrl}`;
   };
 
   const irParaDescricao = () => {
-    navigate(`/descricao/${id}`); // Passa o ID como parte da URL
+    navigate(`/descricao/${id}`);
   };
 
   return (
@@ -28,7 +27,7 @@ function Card({ id, title, text, image }) {
       }}
     >
       <img
-        src={resolveImageUrl(image)} // Resolve a URL da imagem
+        src={resolveImageUrl(image)}
         className="card-img-top"
         alt={title}
         style={{ height: '50%' }}
